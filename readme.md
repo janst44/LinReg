@@ -1,6 +1,10 @@
 ### Big Data Science
 
+<<<<<<< HEAD
 # Linear Regression Assignment
+=======
+### Big Data Science
+>>>>>>> 3ab3349e181484fbdf54cf9f42a10a4370811e88
 
 For all problems, submit your python code. Comment out your responses in the code
 and submit 1 file.
