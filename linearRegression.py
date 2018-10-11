@@ -30,51 +30,47 @@ hwdata.head()
 # Height - in inches
 # Weight - in lbs
 
-hwdata.dtypes
 hwdata.describe()
 
 ### Split data into training, test
 
 hwdataTrain, hwdataTest = train_test_split(hwdata, test_size=.3, random_state=5203)
-hwdataTrain.shape
-hwdataTest.shape
+plt.plot(hwdataTrain[['height']], hwdataTrain[['weight']], ".")
 
-# I don't think this is needed -A
-# plt.plot(hwdataTrain[['height']], hwdataTrain[['weight']], hwdataTrain)
-
-model = smf.ols(formula='weight ~ 1 + height', data=hwdataTrain).fit()
-model.summary()
+### Creating Intercept Model
+int_model = smf.ols(formula='weight ~ 1 + height', data=hwdataTrain).fit()
+int_model.summary()
 
 ### Test our residuals
-residual = model.resid
-
 # Test for normalality of residuals
-plt.hist(residual, 50)
+plt.hist(int_model.resid, 50)
+plt.show()
+# Residuals seem to be normal, with mean 0.
+
+# Test for heteroscedasticity
+plt.plot(int_model.predict(hwdataTrain), residual, '.')
+# The prediction plot seems to show constant variance, with no heteroscedasticity.
+
+### Creating No Intercept Model
+no_int_model = smf.ols(formula='weight ~ 0 + height', data=hwdataTrain).fit()
+no_int_model.summary()
+
+### Test our residuals
+# Test for normalality of residuals
+plt.hist(no_int_model.resid, 50)
 plt.show()
 
 # Test for heteroscedasticity
-plt.plot(model.predict(hwdataTrain), residual, '.')
-
-model_rsquared = smf.ols(formula='weight ~ 0 + height', data=hwdataTrain).fit()
-model_rsquared.summary()
-
-### Test our residuals
-residual = model_rsquared.resid
-
-# Test for normalality of residuals
-plt.hist(residual, 50)
-plt.show()
-
-# Test for heteroscedasticity
-#plt.plot(model_rsquared.predict(hwdataTrain), residual, '.')
+plt.plot(no_int_model.predict(hwdataTrain), residual, '.')
 
 
 #(1)TODO:have a stat guy look at
-#The R-squared variance is less for our linear model with the intercept meaning that our data fits the first linear model better. The error variance is within a near range of y for each x as x and y increases, this is more true for our first model than our second so we can say this is a better fit. The errors are independent of each other we see this by the absence of any major defects in our graph along with no abnormal clumps of data in either graph.
+# The R-squared variance is less for our linear model with the intercept meaning that our data fits the first linear model better. The error variance is within a near range of y for each x as x and y increases, this is more true for our first model than our second so we can say this is a better fit. The errors are independent of each other we see this by the absence of any major defects in our graph along with no abnormal clumps of data in either graph.
 #If we were to use R^2 as our function then our model then our residual would be at least even greater, so it wont fit the data better.
 
-###################Part2###########################
-print("############PART2###########")
+
+########## Part2 ##########
+print("########## Part2 ##########")
 
 hwdata = pd.read_csv(os.path.join(cwd, 'height_weight2.csv'))
 hwdata.columns = ['height', 'weight']
