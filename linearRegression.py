@@ -90,8 +90,8 @@ plt.show()
 #(2)TODO:
 #
 
-###################Part 3###########################
-print("########## Part 3 ##########)
+########## Part 3 ##########
+print("########## Part 3 ##########")
 
 hwdata = pd.read_csv(os.path.join(cwd, 'car.csv'))
 hwdata.columns = ['age', 'make', 'type', 'miles', 'price']
