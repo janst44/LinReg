@@ -1,7 +1,5 @@
- 
-# coding: utf-8
 
-# # Logistic Regression
+### Logistic Regression
 
 import pandas as pd
 import numpy as np
@@ -16,54 +14,57 @@ cwd = os.getcwd()
 
 
 
-#THE THREE CONDITIONS:
-#1.The error variable is normally distributed.
-#2.The error variance is constant for all values of x.
-#3.The errors are independent of each other.
-##########################Part1###################
-#print(cwd)
-print("#################PART1###############")
+# THE THREE CONDITIONS:
+# 1. The error variable is normally distributed.
+# 2. The error variance is constant for all values of x.
+# 3. The errors are independent of each other.
+
+########## Part1 ##########
+print("########## Part1 ##########")
 hwdata = pd.read_csv(os.path.join(cwd, 'height_weight1.csv'))
 hwdata.columns = ['height', 'weight']
-#print(hwdata.head())
+hwdata.head()
 
-# ##### VARIABLE DESCRIPTIONS
-#
+### VARIABLE DESCRIPTIONS
+
 # Height - in inches
 # Weight - in lbs
 
-#print(hwdata.dtypes)
+hwdata.dtypes
+hwdata.describe()
 
+### Split data into training, test
 
-#print(hwdata.describe())
-
-### split data into training, test
-hwdataTrain, hwdataTest = train_test_split(hwdata, test_size=.3, random_state=123)
+hwdataTrain, hwdataTest = train_test_split(hwdata, test_size=.3, random_state=5203)
 hwdataTrain.shape
 hwdataTest.shape
 
-#plt.plot(hwdataTrain[['height']], hwdataTrain[['weight']], hwdataTrain)
+# I don't think this is needed -A
+# plt.plot(hwdataTrain[['height']], hwdataTrain[['weight']], hwdataTrain)
 
 model = smf.ols(formula='weight ~ 1 + height', data=hwdataTrain).fit()
-print(model.summary())
+model.summary()
 
 ### Test our residuals
 residual = model.resid
-# Test for normal residuals
+
+# Test for normalality of residuals
 plt.hist(residual, 50)
 plt.show()
-#print(plt.show())
+
 # Test for heteroscedasticity
-#plt.plot(model.predict(hwdataTrain), residual, '.')
+plt.plot(model.predict(hwdataTrain), residual, '.')
 
 model_rsquared = smf.ols(formula='weight ~ 0 + height', data=hwdataTrain).fit()
-print(model_rsquared.summary())
+model_rsquared.summary()
 
 ### Test our residuals
 residual = model_rsquared.resid
-# Test for normal residuals
+
+# Test for normalality of residuals
 plt.hist(residual, 50)
 plt.show()
+
 # Test for heteroscedasticity
 #plt.plot(model_rsquared.predict(hwdataTrain), residual, '.')
 
@@ -113,4 +114,3 @@ plt.show()
 
 #(3)TODO:
 #
-
