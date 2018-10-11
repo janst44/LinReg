@@ -1,6 +1,6 @@
 ### Big Data Science
 
-# Linear Regression Assignment
+# Linear Regression Assignment (Individual)
 
 For all problems, submit your python code. Comment out your responses in the code
 and submit 1 file.
@@ -30,7 +30,7 @@ number of miles, and price the car recently sold for.
   convertible with 67,000 miles would cost.
 
 
-# Linear Regression Assignment 2
+# Linear Regression Assignment 2 (Group)
 
 This assignment should be done in your groups. Feel free to use Python or R for this assignment.
 
