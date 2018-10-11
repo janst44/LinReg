@@ -48,7 +48,7 @@ plt.show()
 # Residuals seem to be normal, with mean 0.
 
 # Test for heteroscedasticity
-plt.plot(int_model.predict(hwdataTrain), residual, '.')
+plt.plot(int_model.predict(hwdataTrain), int_model.resid, '.')
 # The prediction plot seems to show constant variance, with no heteroscedasticity.
 
 ### Creating No Intercept Model
@@ -61,8 +61,8 @@ plt.hist(no_int_model.resid, 50)
 plt.show()
 
 # Test for heteroscedasticity
-plt.plot(no_int_model.predict(hwdataTrain), residual, '.')
-
+plt.plot(no_int_model.predict(hwdataTrain), no_int_model.resid, '.')
+# The prediction plot seems to show constant variance, meaning there is no heteroscedasticity.
 
 #(1)TODO:have a stat guy look at
 # The R-squared variance is less for our linear model with the intercept meaning that our data fits the first linear model better. The error variance is within a near range of y for each x as x and y increases, this is more true for our first model than our second so we can say this is a better fit. The errors are independent of each other we see this by the absence of any major defects in our graph along with no abnormal clumps of data in either graph.
