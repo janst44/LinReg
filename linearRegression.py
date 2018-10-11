@@ -20,7 +20,7 @@ cwd = os.getcwd()
 # 3. The errors are independent of each other.
 
 ########## Part1 ##########
-print("########## Part1 ##########")
+print("########## Part 1 ##########")
 hwdata = pd.read_csv(os.path.join(cwd, 'height_weight1.csv'))
 hwdata.columns = ['height', 'weight']
 hwdata.head()
@@ -70,7 +70,7 @@ plt.plot(no_int_model.predict(hwdataTrain), residual, '.')
 
 
 ########## Part2 ##########
-print("########## Part2 ##########")
+print("########## Part 2 ##########")
 
 hwdata = pd.read_csv(os.path.join(cwd, 'height_weight2.csv'))
 hwdata.columns = ['height', 'weight']
@@ -90,8 +90,8 @@ plt.show()
 #(2)TODO:
 #
 
-###################Part3###########################
-print("############PART3###########")
+###################Part 3###########################
+print("########## Part 3 ##########)
 
 hwdata = pd.read_csv(os.path.join(cwd, 'car.csv'))
 hwdata.columns = ['age', 'make', 'type', 'miles', 'price']
