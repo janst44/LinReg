@@ -1,6 +1,6 @@
-# Linear Regression Assignment
+### Big Data Science
 
-# Big Data Science
+# Linear Regression Assignment (Individual)
 
 For all problems, submit your python code. Comment out your responses in the code
 and submit 1 file.
@@ -9,7 +9,7 @@ For problems 1 and 2, the height_weight files contain 1 column of heights (in in
 and 1 column of weights (in pounds). We are interested in the effect of height on
 weight.
 
-1. Using the height_weight1.csv file, fit a linear model to the height and weight 
+1. Using the height_weight1.csv file, fit a linear model to the height and weight
   data that includes an intercept. Fit another model that does not include the
   intercept. In terms of our 3 residual assumptions, how do these two models
   compare? Can we use R^2 or another metric to determine which fits the data
